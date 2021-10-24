@@ -1,0 +1,28 @@
+
+
+
+<div cdkDrag cdkDragRootElement=".cdk-overlay-pane">
+  <mat-card>
+    <h3>{{title}}</h3>
+  
+          <section class="training">
+            <form  (ngSubmit)="AddClassificationType(f)" #f="ngForm" [formGroup]="AddClassificationTypeForm" fxLayoutGap="50px">
+    
+          
+            <mat-form-field id="mat1">
+                <input matInput placeholder="designation" autocomplete="off" [(ngModel)]="classificationtype.designation" formControlName="designation" required #pwInput>
+              </mat-form-field>
+    
+                        <br>
+                        <button color="primary" title="Save" [disabled]="f.invalid">
+                        <mat-icon>save</mat-icon></button>
+                          <mat-icon (click)="closepopup()" title="Cancel" color="warn">close</mat-icon>
+    
+    
+        </form>
+      </section>
+    
+    
+    
+  </mat-card>
+</div>

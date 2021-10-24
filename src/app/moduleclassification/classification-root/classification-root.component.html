@@ -1,0 +1,16 @@
+<mat-card>
+<mat-tab-group>
+    
+    <mat-tab label="Classification type">
+    <app-classificationtype-list></app-classificationtype-list>
+  </mat-tab>
+
+  <mat-tab label="Classification" (click)="ClassificationClicked()">
+    <app-classification-list></app-classification-list>
+</mat-tab>
+
+<mat-tab label="Autofill">
+    <app-classificationautofill-list></app-classificationautofill-list>
+</mat-tab>
+  </mat-tab-group>
+</mat-card>

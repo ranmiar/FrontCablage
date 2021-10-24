@@ -1,0 +1,90 @@
+
+<!-- Designation: {{component.Designation?}}
+TTA: {{component.TTA}}
+TechnicalClassification: {{component.TechnicalClassification}}
+Unit:{{component.Unit}} -->
+<div class="component">
+    <fieldset>
+      <legend>Component</legend> <!-- Titre du fieldset --> 
+  
+      <label for="nom">Renault part number</label>
+      <input type="text" name="nom" id="nom" value={{component.renaultpartnumber}} disabled><br>
+  
+      <label for="prenom">Designation</label>
+      <input type="text" name="prenom" id="prenom" value={{component.designation}} disabled/><br>
+  
+      <label for="email">TTA</label>
+      <input type="email" name="email" id="email" value={{component.tta}} disabled/><br>
+      
+      <label for="technicalClassification">TechnicalClassification</label>
+      <input type="text" name="technicalClassification" id="technicalClassification" value={{component.technicalClassification}} disabled /><br>
+  
+      <label for="unit">Unit</label>
+      <input type="text" name="unit" value={{component.mesurement?.unit}}/><br> 
+  
+  </fieldset>
+    
+    {{component.nissanpartnumber}}
+  </div>
+  
+  <div class="example-container mat-elevation-z8"  *ngIf="component.offer" style="height: 200px; overflow: auto;">
+          <table mat-table  [dataSource]="offreModelList" multiTemplateDataRows matSort>
+        
+              <!-- <ng-container matColumnDef="id_offer">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="id_offer"> Id </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.id_offer}} </td>
+              </ng-container> -->
+              <ng-container matColumnDef="unitprice">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="unitprice"> Unitprice </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.price.unitprice}} </td>
+              </ng-container>
+              <ng-container matColumnDef="priceType">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="priceType"> priceType </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.price.priceType.priceTypeDesc}} </td>
+              </ng-container>
+              <ng-container matColumnDef="validitydate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Validity date </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.validitydate | date: 'dd/MM/yyyy'}} </td>
+              </ng-container>
+              <ng-container matColumnDef="sizeextentionmin">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Size ext min</th>
+                <td mat-cell *matCellDef="let offer"> {{offer.price.sizeExtensionMin }} </td>
+              </ng-container>
+              <ng-container matColumnDef="sizeextentionmax">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Size ext max </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.price.sizeExtensionMax}} </td>
+              </ng-container>
+              <ng-container matColumnDef="manufacturingcountryname">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="manufacturingcountryname"> Manufacturingcountryname </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.manufacturingcountryname}} </td>
+              </ng-container>
+              <ng-container matColumnDef="economicareacode">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Economic area </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.economicareacode}} </td>
+              </ng-container>
+              <!-- <ng-container matColumnDef="nominationOffre">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nomination </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.nominationOffre}} </td>
+              </ng-container> -->
+              <ng-container matColumnDef="programme">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Programme </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.programme.code}} </td>
+              </ng-container>
+              <ng-container matColumnDef="harnessfactory">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Harnessfactory </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.harnessFactory.harFactory}} </td>
+              </ng-container>
+              <ng-container matColumnDef="harnessmaker">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Harnessmaker </th>
+                <td mat-cell *matCellDef="let offer"> {{offer.harnessMaker.harMaker}} </td>
+              </ng-container>
+               
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsOffer; sticky: true"></tr>
+              <tr mat-row *matRowDef="let offer; columns: displayedColumnsOffer;"></tr>
+            </table>
+      
+      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator> -->
+              <!-- </div> -->
+  </div>
+  <button mat-raised-button type="button" class="Discard-btn">Cancel</button>
+    

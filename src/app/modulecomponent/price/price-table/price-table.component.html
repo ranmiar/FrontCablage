@@ -1,0 +1,83 @@
+<div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()"
+                          [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"
+                          [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+    
+    
+        <ng-container matColumnDef="unitprice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Unit Price">Unit Price </th>
+          <td mat-cell *matCellDef="let price"> {{price.unitprice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sizeExtensionMin">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="sizeExtensionMin">Min</th>
+            <td mat-cell *matCellDef="let price"> {{price.sizeExtensionMin}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sizeExtensionMax">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="sizeExtensionMax">Max </th>
+            <td mat-cell *matCellDef="let price"> {{price.sizeExtensionMax}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="validityDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="validityDate">Validity </th>
+            <td mat-cell *matCellDef="let price"> {{price.validityDate | date}}  </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="tieronepn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="tieronepn">tieronepn </th>
+            <td mat-cell *matCellDef="let price"> {{price.tieronepn}} </td>
+          </ng-container>
+       
+          <ng-container matColumnDef="tiertwopn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="tiertwopn">tiertwopn </th>
+            <td mat-cell *matCellDef="let price"> {{price.tiertwopn}} </td>
+          </ng-container>
+       
+          <ng-container matColumnDef="harnessNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="harnessNumber">harnessNumber </th>
+            <td mat-cell *matCellDef="let price"> {{price.harnessNumber}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="pricelinecomment">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="pricelinecomment">pricelinecomment </th>
+            <td mat-cell *matCellDef="let price"> {{price.pricelinecomment}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="customrate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="customrate">customrate </th>
+            <td mat-cell *matCellDef="let price"> {{price.customrate}} </td>
+          </ng-container>
+          <ng-container matColumnDef="proportionalprice">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="proportionalprice">proportionalprice </th>
+            <td mat-cell *matCellDef="let price"> {{price.proportionalprice}} </td>
+          </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+    
+      </table>
+      <mat-paginator [length]="100"
+      [pageSize]="10"
+     [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+    </div>
+<div *ngIf="ispopup">
+  <mat-icon (click)="closepopup()" title="Cancel" color="warn">close</mat-icon>
+</div>

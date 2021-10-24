@@ -1,0 +1,94 @@
+<div class="mat-elevation-z8">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="example-button-row">
+      &nbsp;&nbsp;&nbsp;
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" [(ngModel)]="filter" autocomplete="off" placeholder="Filter" #input>  
+    
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <mat-form-field id="listtypes">
+
+        <mat-select matNativeControl [(ngModel)]="selectedType"  (selectionChange)="TypeChanged($event)" placeholder="select type" ngModel name="selectedType">
+          <mat-option value="" selected></mat-option>
+          <mat-option *ngFor="let type of classificationtypelist" [value]="type">
+ 
+            {{type.designation}}
+          </mat-option>
+        </mat-select>
+ </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <mat-icon color="primary" title ="Add Classification" (click)="DisplayAddClassification()">add_circle</mat-icon>
+     
+      &nbsp;&nbsp;&nbsp;
+      <mat-icon class="orange-icon" title ="Update Classification" (click)="DisplayUpdateClassification()">create</mat-icon>
+      &nbsp;&nbsp;&nbsp;
+      <mat-icon color="warn" title ="Delete Classification" (click)="DeleteClassification()">delete</mat-icon>
+      </div>
+     
+      <div>
+        <mat-spinner *ngIf="isLoading" style="margin:0 auto;"></mat-spinner>
+        </div>
+
+        <app-classification-table [classifications]="classifications" (classificationselected)="handleChildButtonClick($event)">
+
+        </app-classification-table>
+  
+      <!-- <table mat-table [dataSource]="dataSource" matSort>
+  
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()"
+                          [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"
+                          [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+    
+    
+        <ng-container matColumnDef="designation">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
+          <td mat-cell *matCellDef="let classification"> {{classification.designation}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="parent_designation">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Parent </th>
+            <td mat-cell *matCellDef="let classification"> {{classification.parent_designation}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="level">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Level </th>
+            <td mat-cell *matCellDef="let classification"> {{classification.level}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="classificationType" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Classification Type </th>
+            <td mat-cell *matCellDef="let classification"> {{classification.classificationTypeDto.designation}} </td>
+          </ng-container>
+    
+       
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+      <mat-paginator [length]="100"
+      [pageSize]="10"
+     [pageSizeOptions]="[5, 10, 25, 100]">
+   </mat-paginator> -->
+      <!-- <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+    
+    </div>
+    

@@ -1,0 +1,86 @@
+
+
+
+<div cdkDrag cdkDragRootElement=".cdk-overlay-pane">
+<mat-card>
+<div>
+
+  
+    <h3>{{title}}</h3>
+
+          <section class="training">
+            <form  (ngSubmit)="AddAutoFill(f)" #f="ngForm" [formGroup]="AddAutoFillForm" fxLayoutGap="50px">
+
+
+              <mat-form-field>
+                <mat-select placeholder="Leader Type" [(ngModel)]="selectedtypeleader" name="selectedtypeleader" formControlName="selectedtypeleader" (selectionChange)="LeaderTypeChanged($event)">
+                  <mat-option value=""></mat-option>
+                       <mat-option *ngFor="let ele of classificationtypes" [value]="ele.id">
+                         {{ ele.designation }}
+                       </mat-option>
+                     </mat-select>
+             </mat-form-field>
+
+
+             
+
+
+             <mat-form-field>
+              <mat-select placeholder="Leader" [(ngModel)]="selectedleader" name="selectedleader" formControlName="selectedleader" (selectionChange)="LeaderChanged($event)">
+                <mat-option value=""></mat-option>
+                     <mat-option *ngFor="let ele of leaderlist" [value]="ele">
+                       {{ ele.designation }}
+                     </mat-option>
+                   </mat-select>
+           </mat-form-field>
+
+
+
+           <mat-form-field>
+            <mat-select placeholder="Dependent Type" [(ngModel)]="selectedtypedependent" name="selectedtypedependent" formControlName="selectedtypedependent" (selectionChange)="DependentTypeChanged($event)">
+              <mat-option value=""></mat-option>
+                   <mat-option *ngFor="let ele of classificationtypes" [value]="ele">
+                     {{ ele.designation }}
+                   </mat-option>
+                 </mat-select>
+         </mat-form-field>
+
+
+         
+         <mat-form-field>
+          <mat-select placeholder="Dependent" [(ngModel)]="selecteddependant" name="selecteddependant" formControlName="selecteddependant">
+            <mat-option value=""></mat-option>
+                 <mat-option *ngFor="let ele of dependentlist" [value]="ele">
+                   {{ ele.designation }}
+                 </mat-option>
+               </mat-select>
+       </mat-form-field>
+
+
+    
+ 
+
+              
+          
+    
+                        <br>
+                        <button color="primary" title="Save" [disabled]="f.invalid">
+                        <mat-icon>save</mat-icon></button>
+                          <mat-icon (click)="closepopup()" title="Cancel" color="warn">close</mat-icon>
+    
+    
+        </form>
+      </section>
+    
+    </div>
+    
+  <!-- </mat-card> -->
+
+
+<hr/>
+<app-autofilllist-child [filtredautofill]="filtredautofill">
+
+</app-autofilllist-child>
+
+</mat-card>
+</div>

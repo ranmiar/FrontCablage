@@ -1,0 +1,25 @@
+<table mat-table [dataSource]="dataSource" matSort>
+  
+
+    <ng-container matColumnDef="leader">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> leader </th>
+      <td mat-cell *matCellDef="let filtredautofill"> {{filtredautofill.leader}} </td>
+    </ng-container>
+
+   
+
+    <ng-container matColumnDef="dependent">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> dependent </th>
+        <td mat-cell *matCellDef="let filtredautofill"> {{filtredautofill.dependent}} </td>
+      </ng-container>
+
+  
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [length]="100"
+  [pageSize]="5"
+ [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>

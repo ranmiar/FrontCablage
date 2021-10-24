@@ -1,0 +1,17 @@
+mat-icon {
+    cursor: pointer;
+  
+  }
+
+  .orange-icon {
+    color:orange;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+    fill:orange;
+}
+
+
+  .mat-table {
+    width: 100%;
+  }

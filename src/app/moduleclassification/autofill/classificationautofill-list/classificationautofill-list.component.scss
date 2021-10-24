@@ -1,0 +1,31 @@
+mat-icon {
+    cursor: pointer;
+  
+  }
+
+  .orange-icon {
+    color:orange;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+    fill:orange;
+}
+
+
+  .mat-table {
+    width: 100%;
+  }
+
+  .mat-table-sticky-border-elem-right {
+    border-left: 1px solid #e0e0e0;
+  }
+  
+  .mat-table-sticky-border-elem-left {
+    border-right: 1px solid #e0e0e0;
+  }
+  .example-container {
+    height: 400px;
+    overflow: auto;
+  }
+
+ 

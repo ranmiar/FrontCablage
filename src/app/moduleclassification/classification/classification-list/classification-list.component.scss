@@ -1,0 +1,37 @@
+// .mat-column-select {
+//     flex: 0 0 15% !important;
+//     min-width: 35px !important;
+//   }
+
+//   .mat-column-designation {
+//     flex: 0 0 15% !important;
+//     min-width: 150px !important;
+//   }
+
+//   mat-form-field{
+//     width: 300px;
+//   }
+//   .material-icons{
+//     cursor: pointer;
+//   }
+
+#listtypes{
+  width: 250px;
+}
+mat-icon {
+  cursor: pointer;
+
+}
+
+.orange-icon {
+  color:orange;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+  fill:orange;
+}
+
+
+.mat-table {
+  width: 100%;
+}

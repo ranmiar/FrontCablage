@@ -1,0 +1,275 @@
+<div class="example-container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
+    
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="renaultpartnumber">
+        <th mat-header-cell *matHeaderCellDef  matTooltip="Renault Part Number"> Number Rnt </th>
+        <td mat-cell *matCellDef="let component"> {{component.renaultpartnumber}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="nissanpartnumber">
+        <th mat-header-cell *matHeaderCellDef  matTooltip="Nissan Part Number"> Number Nis </th>
+        <td mat-cell *matCellDef="let component"> {{component.nissanpartnumber}} </td>
+      </ng-container>
+      <ng-container matColumnDef="designation">
+        <th mat-header-cell *matHeaderCellDef >Designation</th>
+        <td mat-cell *matCellDef="let component"> {{component.designation}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="TTA">
+        <th mat-header-cell *matHeaderCellDef >TTA</th>
+        <td mat-cell *matCellDef="let component"> {{component.tta}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="TechnicalClassification">
+        <th mat-header-cell *matHeaderCellDef >TechnicalClassification</th>
+        <td mat-cell *matCellDef="let component"> {{component.technicalClassification}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="StrategicClassification">
+        <th mat-header-cell *matHeaderCellDef >StrategicClassification</th>
+        <td mat-cell *matCellDef="let component"> {{component.strategicClassification}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="birthdate">
+        <th mat-header-cell *matHeaderCellDef >Birthdate </th>
+        <td mat-cell *matCellDef="let component"> {{component.birthdate | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="alliancespecific">
+        <th mat-header-cell *matHeaderCellDef  matTooltip="Alliance Specific">Alliance</th>
+        <td mat-cell *matCellDef="let component"> {{component.alliancespecific}} </td>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="technicalfile">
+        <th mat-header-cell *matHeaderCellDef  matTooltip="Technical File">File</th>
+        <td mat-cell *matCellDef="let component"> {{component.technicalfile}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="npdm">
+        <th mat-header-cell *matHeaderCellDef >Npdm</th>
+        <td mat-cell *matCellDef="let component"> {{component.npdm}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mgv">
+        <th mat-header-cell *matHeaderCellDef >Mgv</th>
+        <td mat-cell *matCellDef="let component"> {{component.mgv}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sharepoint">
+        <th mat-header-cell *matHeaderCellDef >Sharepoint</th>
+        <td mat-cell *matCellDef="let component"> {{component.sharepoint}} </td>
+      </ng-container>
+      <ng-container matColumnDef="comment">
+        <th mat-header-cell *matHeaderCellDef >Comment</th>
+        <td mat-cell *matCellDef="let component"> {{component.comment}} </td>
+      </ng-container>
+      <ng-container matColumnDef="unit">
+        <th mat-header-cell *matHeaderCellDef >Unit</th>
+        <td mat-cell *matCellDef="let component"> {{component.unit}} </td>
+      </ng-container>
+      <ng-container matColumnDef="creationdate">
+        <th mat-header-cell *matHeaderCellDef >Creation</th>
+        <td mat-cell *matCellDef="let component"> {{component.creationDate | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="updatedate">
+        <th mat-header-cell *matHeaderCellDef >Updatedate</th>
+        <td mat-cell *matCellDef="let component"> {{component.updatedate | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="updateAuthor">
+        <th mat-header-cell *matHeaderCellDef >Author</th>
+        <td mat-cell *matCellDef="let component"> {{component.updateAuthor}} </td>
+      </ng-container>
+      <ng-container matColumnDef="responsible">
+        <th mat-header-cell *matHeaderCellDef >Responsible</th>
+        <td mat-cell *matCellDef="let component"> {{component.responsible}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <div class="example-element-detail"
+            *ngIf="element.offer?.length>1"
+            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'" >
+              <table mat-table [dataSource]="element.offer" multiTemplateDataRows>
+                <ng-container matColumnDef="economicareacode">
+                  <th mat-header-cell *matHeaderCellDef >Economic area </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.economicareacode}} </td>
+                </ng-container> 
+                <ng-container matColumnDef="id_price">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="id_price"> IdPrice </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.id_price}} </td>
+                </ng-container>
+                <ng-container matColumnDef="id_offer">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="id_offer"> IdOffer </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.id_offer}} </td>
+                </ng-container>
+                <ng-container matColumnDef="harnessmaker">
+                  <th mat-header-cell *matHeaderCellDef >Harnessmaker </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.harnessMaker.harMaker}} </td>
+                </ng-container>
+                <ng-container matColumnDef="programme">
+                  <th mat-header-cell *matHeaderCellDef >Programme </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.programme.code}} </td>
+                </ng-container>
+                <ng-container matColumnDef="dateofrecept">
+                  <th mat-header-cell *matHeaderCellDef >dateofrecept </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.dateofrecept| date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="factoryCountry">
+                  <th mat-header-cell *matHeaderCellDef >FactoryCountry </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.factoryCountry}} </td>
+                </ng-container>
+                <ng-container matColumnDef="harnessfactory">
+                  <th mat-header-cell *matHeaderCellDef >Harnessfactory </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.harnessFactory.harFactory}} </td>
+                </ng-container>
+                <ng-container matColumnDef="nominationOffre">
+                  <th mat-header-cell *matHeaderCellDef >NominationOffre </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.nominationOffre}} </td>
+                </ng-container>
+                <ng-container matColumnDef="sizeExtensionMin">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="sizeExtensionMin"> SizeExtensionMin </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.sizeExtensionMin}} </td>
+                </ng-container>
+                <ng-container matColumnDef="sizeExtensionMax">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="sizeExtensionMax"> SizeExtensionMax </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.sizeExtensionMax}} </td>
+                </ng-container>
+                <ng-container matColumnDef="validitydate">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="validitydate"> validitydate </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.validityDate | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="tier1pn">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="tier1pn"> Tier1pn </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.tier1pn}} </td>
+                </ng-container>
+                <ng-container matColumnDef="tier2pn">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="tier2pn"> Tier2pn </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.tier2pn}} </td>
+                </ng-container>
+                <ng-container matColumnDef="harnesspartnumber">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="harnesspartnumber"> Harnesspartnumber </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.harnesspartnumber}} </td>
+                </ng-container>
+                <ng-container matColumnDef="pricelinecomment">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="pricelinecomment"> Pricelinecomment </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.pricelinecomment}} </td>
+                </ng-container>
+                <ng-container matColumnDef="manufacuringCountry">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="manufacuringCountry"> ManufacuringCountry </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.manufacuringCountry?.iso3166Country_name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="purchasingCountry">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="purchasingCountry"> PurchasingCountry </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.purchasingCountry?.iso3166Country_name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="destinationCountry">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="destinationCountry"> DestinationCountry </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.destinationCountry?.iso3166Country_name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="currency">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="currency"> Currency </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.currency?.iso4712_alpha3_code}} </td>
+                </ng-container>
+                <ng-container matColumnDef="priceType">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="priceType"> PriceType </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.priceType?.priceTypeDesc}} </td>
+                </ng-container>
+                <ng-container matColumnDef="wCOHSCutomCodes">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="wCOHSCutomCodes"> CutomCode </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.wcohsCutomCodes?.designation}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="customrate">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="customrate"> customrate </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.customrate}} </td>
+                </ng-container>
+                <ng-container matColumnDef="incotermcode">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="incotermcode"> incotermcode </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.incoterm?.incoterm_code}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="unitprice">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="unitprice"> unitprice </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.unitprice}} </td>
+                </ng-container>
+                <ng-container matColumnDef="proportionalprice">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="proportionalprice"> proportionalprice </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.proportionalprice}} </td>
+                </ng-container>
+                <ng-container matColumnDef="creationdateprice">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="creationdateprice"> creationdateprice </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.creationDate | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="updatedateprice">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="updatedateprice"> updatedateprice </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.updateDate | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="priceUpdateAuthor">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="priceUpdateAuthor"> priceUpdateAuthor </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.priceUpdateAuthor?.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="collector">
+                  <th mat-header-cell *matHeaderCellDef  matTooltip="collector"> collector </th>
+                  <td mat-cell *matCellDef="let offer"> {{offer.price.collector.name}} </td>
+                </ng-container>
+
+                
+
+                <ng-container matColumnDef="updatepublicprice">
+                  <th mat-header-cell *matHeaderCellDef >
+                    <mat-radio-button value="option 1">flag</mat-radio-button>
+                  </th>
+                  <td mat-cell *matCellDef="let offer">
+                     {{offer.economicareacode}}
+                  </td>
+                </ng-container> 
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsOffer; sticky: true"></tr>
+                <tr mat-row *matRowDef="let offer; columns: displayedColumnsOffer;"></tr>
+              </table>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        class="example-element-row"
+      [class.example-expanded-row]="expandedElement === row"
+      (click)="expandedElement = expandedElement === row ? null : row">
+      </tr> -->
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+    class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      
+      <!-- Afficher detail -->
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+    <mat-paginator [length]="100"
+    [pageSize]="15"
+   [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+

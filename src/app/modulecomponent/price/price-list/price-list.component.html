@@ -1,0 +1,41 @@
+<div class="mat-elevation-z8">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="example-button-row">
+        &nbsp;&nbsp;&nbsp;
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" [(ngModel)]="filter" autocomplete="off" placeholder="Filter" #input>  
+      
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-form-field id="listclassifications">
+  
+          <mat-select matNativeControl [(ngModel)]="selectedPrice"  (selectionChange)="ComponentChanged($event)" placeholder="select component" ngModel name="selectedcomponent">
+            <mat-option value="" selected></mat-option>
+            <mat-option *ngFor="let type of compoentlist" [value]="type">
+   
+              {{type.renaultpartnumber}}
+            </mat-option>
+          </mat-select>
+   </mat-form-field>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-icon color="primary" title ="Add Component">add_circle</mat-icon>
+       
+        &nbsp;&nbsp;&nbsp;
+        <mat-icon class="orange-icon" title ="Update Component">create</mat-icon>
+        &nbsp;&nbsp;&nbsp;
+        <mat-icon color="warn" title ="Delete Component">delete</mat-icon>
+        </div>
+       
+        <div>
+          <mat-spinner *ngIf="isLoading" style="margin:0 auto;"></mat-spinner>
+          </div>
+  
+          <app-price-table [prices]="prices" (priceselected)="handleChildButtonClick($event)">
+  
+          </app-price-table>
+    
+       
+      
+      </div>
+      

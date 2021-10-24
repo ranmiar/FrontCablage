@@ -1,0 +1,11 @@
+<form [formGroup]="componentinputForm">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Component" formControlName="component" [matAutocomplete]="autoCo" (ngModelChange)=onSelectionChanged($event)/>
+      <mat-autocomplete #autoCo="matAutocomplete" [displayWith]="displayCo" >
+          <mat-option *ngFor="let component of filteredComponents | async" [value]="component.renaultpartnumber">
+              {{ component.renaultpartnumber}} 
+              <!-- {{component.designation}} -->
+          </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>

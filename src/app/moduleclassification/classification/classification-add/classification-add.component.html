@@ -1,0 +1,49 @@
+
+
+  <div cdkDrag cdkDragRootElement=".cdk-overlay-pane">
+      <h3>{{title}}</h3>
+  
+            <section class="training">
+              <form  (ngSubmit)="AddClassification(f)" #f="ngForm" [formGroup]="AddClassificationForm" fxLayoutGap="50px">
+      
+            
+              <mat-form-field id="mat1">
+                  <input matInput placeholder="Designation" autocomplete="off" [(ngModel)]="classification.designation" formControlName="designation" required #pwInput>
+                </mat-form-field>
+
+                
+                <mat-form-field>
+                  <mat-select placeholder="Parent" [(ngModel)]="classification.idParent" name="selectedParent" formControlName="selectedParent">
+                    <mat-option value="" classification.idParent></mat-option>
+                         <mat-option *ngFor="let ele of classificationslist" [value]="ele.id">
+                           {{ ele.designation }}
+                         </mat-option>
+                       </mat-select>
+               </mat-form-field>
+
+                         
+               <mat-form-field>
+                <mat-select placeholder="Type" [(ngModel)]="classification.classificationTypeDto.id" name="types" formControlName="types"  (selectionChange)="TypeChanged($event)">
+                       <mat-option *ngFor="let type of classificationstypes" [value]="type.id">
+                         {{ type.designation }}
+                       </mat-option>
+                     </mat-select>
+             </mat-form-field>
+
+             <mat-form-field>
+              <input type="number" [(ngModel)]="classification.level" name="level" formControlName="level" matInput placeholder="level">
+            </mat-form-field>
+      
+                          <br>
+                          <button color="primary" title="Save" [disabled]="f.invalid">
+                          <mat-icon>save</mat-icon></button>
+                            <mat-icon (click)="closepopup()" title="Cancel" color="warn">close</mat-icon>
+      
+      
+          </form>
+        </section>
+      
+      
+      
+    <!-- </mat-card> -->
+  </div>

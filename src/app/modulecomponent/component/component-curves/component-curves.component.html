@@ -1,0 +1,46 @@
+<!-- <div class="container">
+    <form [formGroup]="curvesForm" class="form" (ngSubmit)="onSubmitFilter()">
+        <mat-form-field  class="form-element">
+            <label for="componentName"> Component</label> 
+            <input type="text" matInput id="componentName" class="form-control" formControlName="componentDesc">
+        </mat-form-field>
+        
+        <mat-form-field  class="form-element">
+            <label for="startdate"> Start date</label>
+            <input type="date" matInput id="startdate" class="form-control" formControlName="startDate">
+        </mat-form-field>
+        <mat-form-field  class="form-element">
+            <label for="startdate"> End date</label>
+            <input type="date" matInput id="endDate" class="form-control" formControlName="endDate">
+        </mat-form-field>
+        <mat-form-field>
+             <label for="money"> Money</label> 
+            <select id="money" class="form-control" formControlName="money">
+                <option value="">EUR</option>
+                <option value="">USD</option>
+            </select>
+        </mat-form-field> 
+        <div class="form-element">
+            <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!curvesForm.valid">Load</button>
+        </div>
+
+    </form>
+</div>  -->
+ <div layout="column">
+     <div flex>
+        <!-- <canvas class="modelingChart"   
+            baseChart width="300" height="300"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [legend]="true"
+            [chartType]="'line'">
+        </canvas> -->
+        <canvas class="mt-5" id="myChart2" width="1200px" height="400"></canvas>
+    </div>  
+<div> 
+<!-- <div class="test">
+    <button (click)="drawRectable()">Draw rectable</button>
+    <canvas id="stage" width="200" height="200"></canvas>
+
+</div> -->

@@ -1,0 +1,132 @@
+<!-- <component-input [componentinputForm]="componentinputForm" (optionSelected)="onSelected($event)"></component-input>  -->
+<div cdkDrag cdkDragRootElement=".cdk-overlay-pane">
+    <h3>Component</h3>
+    <mat-card>
+        <div mat-dialog-content>
+            <form [formGroup]="componentForm" fxLayoutGap="50px" (ngSubmit)="onSubmitComponent()">
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Component" formControlName="component" [matAutocomplete]="autoCo" (ngModelChange)=onSelectionChanged($event)/>
+                    <mat-autocomplete #autoCo="matAutocomplete" [displayWith]="displayCo" >
+                        <mat-option *ngFor="let component of filteredComponents | async" [value]="component.renaultpartnumber">
+                            {{ component.renaultpartnumber}} 
+                            <!-- {{component.designation}} -->
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Renault part number" formControlName="RnPartNumber">
+                    <mat-error
+                        *ngIf="!componentForm.controls['RnPartNumber'].valid && componentForm.controls['RnPartNumber'].touched">
+                        {{ getErrorRnPartNumber() }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Nissan part number" formControlName="NissanPartNumber">
+                </mat-form-field>
+
+               
+
+                <!-- <mat-form-field class="form-element">
+                    <input type="text" placeholder="Pilih Bank" formControlName="street
+                    " [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                          <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+                            {{street}}
+                          </mat-option>
+                        </mat-autocomplete>
+                </mat-form-field> -->
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Designation" formControlName="Designation">
+                </mat-form-field>
+
+                <!-- Date picker -->
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Birth date" formControlName="birthDate"
+                        (dateChange)="date($event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <mat-select placeholder="Replace By" formControlName="replaceBy">
+                        <mat-option *ngFor="let component of allComponent" [value]="replaceBy">{{ component.designation
+                            }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="form-element">
+                    <mat-select placeholder="Family type" formControlName="FamilyType">
+                        <mat-option *ngFor="let component of classificationtlist" [value]="component">{{component.designation }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <mat-select placeholder="Analog" formControlName="analog" (selectionChange)="onAnalogChange()">
+                        <mat-option *ngFor="let component of allComponent" [value]="analog">{{ component.designation }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Alliance specific" formControlName="AllianceSpecific">
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Alliance specific" formControlName="AllianceSpecific">
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="PN comment" formControlName="PNcomment">
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Technical file" formControlName="TechnicalFile">
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="NPDM" formControlName="NPDM">
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="MGV" formControlName="MGV">
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Sharepoint" formControlName="Sharepoint">
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <mat-select placeholder="Select Unit" formControlName="unit"
+                        (selectionChange)="onMesurementChange()">
+                        <mat-option *ngFor="let component of mesurementslist" [value]="component">{{ component.unit }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Custom code" formControlName="CustomCode">
+
+                </mat-form-field>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Unit Indexed material" formControlName="UnitIndexedMaterial">
+                </mat-form-field>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Proportional Indexed material"
+                        formControlName="ProportionalIndexedMaterial">
+                </mat-form-field>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Responsible" formControlName="Responsible">
+                </mat-form-field>
+
+                <div class="form-element">
+                    <button color="primary" title="Save" type="submit">
+                        <mat-icon>save</mat-icon>
+                    </button>
+                    <mat-icon (click)="closepopup()" title="Cancel" color="warn">close</mat-icon>
+                </div>
+            </form>
+        </div>
+    </mat-card>
+</div>
